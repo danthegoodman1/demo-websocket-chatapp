@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Hello world</title>
+   </head>
+   <script src = "/socket.io/socket.io.js"></script>
+   
+   <script>
+      var socket = io("/newSpace");
+    //   socket.on('testEvent', function(data){
+    //       document.body.innerHTML = '';
+    //       document.write(data.description);
+    //       setTimeout(socket.emit('testResponse', {desc: "Here is a client event!"}), 2000);
+    //   });
+      socket.on('broadcast', function(data){
+          document.body.innerHTML = '';
+          document.write(data.desc);
+      });
+      socket.on('allButSender', function(data){
+          document.body.innerHTML = '';
+          document.write(data.desc);
+      });
+   </script>
+   <body>Hello world</body>
+</html>

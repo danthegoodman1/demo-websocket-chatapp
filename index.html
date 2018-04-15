@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Hello world</title>
+   </head>
+   <script src = "/socket.io/socket.io.js"></script>
+   
+   <script>
+      var socket = io();
+    //   socket.on('testEvent', function(data){
+    //       document.body.innerHTML = '';
+    //       document.write(data.description);
+    //       setTimeout(socket.emit('testResponse', {desc: "Here is a client event!"}), 2000);
+    //   });
+    
+    socket.on('connect_failed', function() {
+        document.write("Sorry, there seems to be an issue with the connection!");
+    });
+    socket.on('broadcast', function(data){
+        document.body.innerHTML = '';
+        document.write(data.desc);
+    });
+    socket.on('allButSender', function(data){
+        document.body.innerHTML = '';
+        document.write(data.desc);
+    });
+    socket.on('connectToRoom', function(data) {
+        document.body.innerHTML = '';
+        document.write(data.desc);
+    })
+   </script>
+   <body>Hello world</body>
+</html>
